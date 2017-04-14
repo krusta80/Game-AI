@@ -1,5 +1,4 @@
 import gym
-import cv2
 
 class Environment:
 
