@@ -2,14 +2,14 @@ import zerorpc
 import os
 import argparse
 import random as rand
-from environment import Environment
+#from environment import Environment
 from train import Trainer
 from dqn import DQN
 
 ## these are just command line arguments. The 10 line code is at the bottom -- Siraj
 parser = argparse.ArgumentParser()
 envarg = parser.add_argument_group('Environment')
-envarg.add_argument("--game", type=str, default="Splendor", help="Name of the board game to test")
+envarg.add_argument("--game", type=str, default="Splendor-v0", help="Name of the board game to test")
 
 memarg = parser.add_argument_group('Memory')
 memarg.add_argument("--size", type=int, default=100000, help="Memory size.")
@@ -59,16 +59,16 @@ else:
 ##here we go...
 
 # initialize gym environment and dqn
-env = Environment(args)
-agent = DQN(env, args)
+#env = Environment(args)
+agent = DQN(args)
 
 # train agent
 Trainer(agent).run()
 
 # play the game
-env.gym.monitor.start(args.out, force=True)
+#env.gym.monitor.start(args.out, force=True)
 agent.play()
-env.gym.monitor.close()
+#env.gym.monitor.close()
 
 
 # class HelloRPC(object):

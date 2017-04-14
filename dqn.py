@@ -8,10 +8,9 @@ from memory import Memory
 
 class DQN:
 
-    def __init__(self, env, params):
-        self.env = env
-        params.actions = env.actions()
-        self.num_actions = env.actions()
+    def __init__(self, params):
+        #params.actions = env.actions()
+        #self.num_actions = env.actions()
         self.episodes = params.episodes
         self.steps = params.steps
         self.train_steps = params.train_steps
@@ -67,16 +66,16 @@ class DQN:
         self.task = self.optimizer.minimize(self.loss, global_step=self.global_step)
 
     def randomRestart(self):
-        self.env.restart()
+        #self.env.restart()
         for _ in range(self.random_starts):
             action = rand.randrange(self.num_actions)
-            reward = self.env.act(action)
-            state = self.env.getScreen()
-            terminal = self.env.isTerminal()
+            #reward = self.env.act(action)
+            #state = self.env.getScreen()
+            #terminal = self.env.isTerminal()
             self.buffer.add(state)
 
             if terminal:
-                self.env.restart()
+                #self.env.restart()
 
     def trainEps(self, train_step):
         if train_step < self.eps_endt:
